@@ -47,6 +47,7 @@ def start(update: Update, context: CallbackContext) -> None:
     chat = update.effective_chat
     name = update.message.chat.first_name
     reply_keyboard = [
+        ['/info'],
         ['/my_hobby'],
         ['/sql_vs_nosql_voice', '/gpt_voice', '/first_love_voice'],
         ['/my_code'],
@@ -71,6 +72,7 @@ def handle_action(update: Update, context: CallbackContext, text: str) -> None:
     chat = update.effective_chat
 
     reply_keyboard = [
+        ['/info'],
         ['/my_hobby'],
         ['/sql_vs_nosql_voice', '/gpt_voice', '/first_love_voice'],
         ['/my_code'],
@@ -111,8 +113,6 @@ def send_audio(
 
 def gpt_voice(update: Update, context: CallbackContext) -> None:
     """Отправка голосового сообщения «gpt»"""
-    message = "Отправка голосового сообщения может занять некоторое время."
-    update.message.reply_text(message)
     path = os.path.join(AUDIO_DIR, 'gpt_voice.ogg')
     caption = "Объясняю своей бабушке, что такое GPT"
     send_audio(update, context, path, caption)
@@ -120,8 +120,6 @@ def gpt_voice(update: Update, context: CallbackContext) -> None:
 
 def sql_vs_nosql_voice(update: Update, context: CallbackContext) -> None:
     """Отправка голосового сообщения «Отличия SQL от NoSQL»"""
-    message = "Отправка голосового сообщения может занять некоторое время."
-    update.message.reply_text(message)
     path = os.path.join(AUDIO_DIR, 'sql_vs_nosql_voice.ogg')
     caption = "Отличия SQL от NoSQL"
     send_audio(update, context, path, caption)
@@ -129,8 +127,6 @@ def sql_vs_nosql_voice(update: Update, context: CallbackContext) -> None:
 
 def first_love_voice(update: Update, context: CallbackContext) -> None:
     """Отправка голосового сообщения «История первой любви»"""
-    message = "Отправка голосового сообщения может занять некоторое время."
-    update.message.reply_text(message)
     path = os.path.join(AUDIO_DIR, 'first_love.ogg')
     caption = "Сказочная история первой любви"
     send_audio(update, context, path, caption)
